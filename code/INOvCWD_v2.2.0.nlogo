@@ -1952,18 +1952,16 @@ end
 to hunting-mortality
 ;20220520. Use local variable to set AET and DRZ morality
 ;20220523. AET mortality implemented after pdcwd = 1
+;20220531. Revise Boolean condition statements in ifelse blocks.
   if aim < 10 [
     ifelse sex = 1
     [
       let mort-mf12hm 0
       (ifelse
-          [drz] of patch-here = 1 and [aet] of patch-here = 1
+          [aet] of patch-here = 1
           [set mort-mf12hm aet-mf12hm]
-          [drz] of patch-here = 0 and [aet] of patch-here = 1
-          [set mort-mf12hm aet-mf12hm]
-          [drz] of patch-here = 1 and [aet] of patch-here = 0
+          [drz] of patch-here = 1
           [set mort-mf12hm mf12hm + (mf12hm * 0)]
-          ; else command
           [set mort-mf12hm mf12hm])
       if random-float 1 < mort-mf12hm [
         set tgroid groid
@@ -1973,13 +1971,10 @@ to hunting-mortality
     [
       let mort-ff12hm 0
       (ifelse
-          [drz] of patch-here = 1 and [aet] of patch-here = 1
+          [aet] of patch-here = 1
           [set mort-ff12hm aet-ff12hm]
-          [drz] of patch-here = 0 and [aet] of patch-here = 1
-          [set mort-ff12hm aet-ff12hm]
-          [drz] of patch-here = 1 and [aet] of patch-here = 0
+          [drz] of patch-here = 1
           [set mort-ff12hm ff12hm + (ff12hm * 0)]
-          ;else command
           [set mort-ff12hm ff12hm])
       if random-float 1 < mort-ff12hm [
         set tgroid groid
@@ -1993,13 +1988,10 @@ to hunting-mortality
     [
       let mort-myhm 0
       (ifelse
-          [drz] of patch-here = 1 and [aet] of patch-here = 1
-          [set mort-myhm aet-myhm]
-          [drz] of patch-here = 0 and [aet] of patch-here = 1
+          [aet] of patch-here = 1
           [set mort-myhm aet-myhm]
           [drz] of patch-here = 1 and [aet] of patch-here = 0
           [set mort-myhm myhm + (myhm * 0)]
-          ;else command
           [set mort-myhm myhm])
       if random-float 1 < mort-myhm [
         set tgroid groid
@@ -2009,13 +2001,10 @@ to hunting-mortality
     [
       let mort-fyhm 0
       (ifelse
-          [drz] of patch-here = 1 and [aet] of patch-here = 1
+          [aet] of patch-here = 1
           [set mort-fyhm aet-fyhm]
-          [drz] of patch-here = 0 and [aet] of patch-here = 1
-          [set mort-fyhm aet-fyhm]
-          [drz] of patch-here = 1 and [aet] of patch-here = 0
+          [drz] of patch-here = 1
           [set mort-fyhm fyhm + (fyhm * 0)]
-          ;else command
           [set mort-fyhm fyhm])
       if random-float 1 < mort-fyhm [
         set tgroid groid
@@ -2029,13 +2018,10 @@ to hunting-mortality
     [
       let mort-mahm 0
       (ifelse
-          [drz] of patch-here = 1 and [aet] of patch-here = 1
+          [aet] of patch-here = 1
           [set mort-mahm aet-mahm]
-          [drz] of patch-here = 0 and [aet] of patch-here = 1
-          [set mort-mahm aet-mahm]
-          [drz] of patch-here = 1 and [aet] of patch-here = 0
+          [drz] of patch-here = 1
           [set mort-mahm mahm + (mahm * 0.1)]
-          ;else commands
           [set mort-mahm mahm])
       if random-float 1 < mort-mahm [
         set tgroid groid
@@ -2045,13 +2031,10 @@ to hunting-mortality
     [
       let mort-fahm 0
       (ifelse
-          [drz] of patch-here = 1 and [aet] of patch-here = 1
+          [aet] of patch-here = 1
           [set mort-fahm aet-fahm]
-          [drz] of patch-here = 0 and [aet] of patch-here = 1
-          [set mort-fahm aet-fahm]
-          [drz] of patch-here = 1 and [aet] of patch-here = 0
+          [drz] of patch-here = 1
           [set mort-fahm fahm + (fahm * 0)]
-          ;else command
           [set mort-fahm fahm])
       if random-float 1 < mort-fahm [
         set tgroid groid
@@ -4446,7 +4429,7 @@ aet-mf12hm
 aet-mf12hm
 0
 1
-0.05
+0.06
 0.01
 1
 NIL
@@ -4461,7 +4444,7 @@ aet-ff12hm
 aet-ff12hm
 0
 1
-0.02
+0.03
 0.01
 1
 NIL
@@ -4476,7 +4459,7 @@ aet-myhm
 aet-myhm
 0
 1
-0.25
+0.26
 0.01
 1
 NIL
@@ -4491,7 +4474,7 @@ aet-fyhm
 aet-fyhm
 0
 1
-0.15
+0.16
 0.01
 1
 NIL
@@ -4506,7 +4489,7 @@ aet-mahm
 aet-mahm
 0
 1
-0.4
+0.41
 0.01
 1
 NIL
@@ -4521,7 +4504,7 @@ aet-fahm
 aet-fahm
 0
 1
-0.2
+0.21
 0.01
 1
 NIL
